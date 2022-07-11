@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
 
 
 #importing required libraries
@@ -10,8 +9,6 @@ import re
 import requests
 import pandas
 
-
-# In[2]:
 
 
 #for extracting contact info
@@ -27,15 +24,11 @@ def creating_icon_dict(BeautifulSoup):
     return icons_dict
 
 
-# In[ ]:
 
 
 #url to fetch
 baseURL=input("Enter repository link:")
 numofPages= input("Enter the number of pages: ")
-
-
-# In[ ]:
 
 
 #example of repository link
@@ -45,13 +38,13 @@ numofPages= input("Enter the number of pages: ")
 #scroll to the bottom of the justdial page and look for the page index at right corner
 
 
-# In[3]:
 
 
 headers= {
     "accept": "application/json, text/javascript, */*; q=0.01",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
     }
+
 #creating a new list to store the extracted info
 List= []
 
@@ -69,7 +62,7 @@ for pageNum  in range(1,numofPages+1):                                         #
     
     
 
-    for i in range(10):                                            #improvization possible
+    for i in range(10):
         d={}
 
         #extracting name
@@ -100,21 +93,6 @@ for pageNum  in range(1,numofPages+1):                                         #
 
         List.append(d)
 
-
-# In[5]:
-
-
 dF= pandas.DataFrame(List)
-
-
-# In[6]:
-
-
-dF
-
-
-# In[7]:
-
-
 dF.to_csv("JD.csv")
 
